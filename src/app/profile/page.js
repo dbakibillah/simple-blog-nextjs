@@ -1,17 +1,9 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
+import Profile from "../components/Profile";
 
-const ProfilePage =  () => {
-  const { getUser } = getKindeServerSession();
-  const user =  getUser();
-
-  if (!user) {
-    redirect("/api/auth/login");
-  }
-
+const ProfilePage = () => {
   return (
-    <div className="container mx-auto mt-10 text-center">
-      <h2 className="text-2xl font-bold">Welcome to your profile!</h2>
+    <div>
+      <Profile />
     </div>
   );
 };
