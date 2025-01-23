@@ -1,14 +1,9 @@
 import axios from "axios";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
 const blogPage = async ({ params }) => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   const { id } = await params;
-  if (!user) {
-    redirect("/api/auth/login");
-    return null;
-  }
   const res = await axios.get(
     `https://jsonplaceholder.typicode.com/posts/${id}`
   );
