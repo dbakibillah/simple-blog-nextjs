@@ -16,8 +16,7 @@ const ProfilePage = () => {
   return (
     <div className="container mx-auto mt-10 text-center">
       <h2 className="text-2xl font-bold">
-        Welcome to your profile{" "}
-        <span className="text-blue-500">{user.given_name} !!!</span>
+        Welcome to your profile!
       </h2>
     </div>
   );
