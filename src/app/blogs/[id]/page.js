@@ -1,8 +1,5 @@
 import axios from "axios";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 const blogPage = async ({ params }) => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
   const { id } = await params;
   const res = await axios.get(
     `https://jsonplaceholder.typicode.com/posts/${id}`
