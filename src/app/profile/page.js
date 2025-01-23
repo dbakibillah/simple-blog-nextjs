@@ -1,27 +1,18 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
-// Fetch session and check authentication before page rendering
-export async function getServerSideProps(context) {
-  // Get the session from the server
+// This is a server component that checks for authentication before rendering the page
+const ProfilePage = async () => {
+  // Get the session and user from Kinde Auth
   const session = await getKindeServerSession();
+  const user = await session.getUser();
 
-  // If no session or user, redirect to login page
-  if (!session || !session.getUser()) {
-    return {
-      redirect: {
-        destination: "/api/auth/login", // Redirect to login page
-        permanent: false,
-      },
-    };
+  // If no user is found, redirect to the login page
+  if (!user) {
+    redirect("/api/auth/login");
   }
 
-  // If user is authenticated, return user info as props
-  return {
-    props: {},
-  };
-}
-
-const ProfilePage = () => {
+  // If the user is authenticated, render the profile page with a welcome message
   return (
     <div className="container mx-auto mt-10 text-center">
       <h2 className="text-2xl font-bold">
