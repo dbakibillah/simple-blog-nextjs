@@ -7,7 +7,7 @@ const Navbar = async () => {
     const links = <>
         <li className="border border-black rounded-lg"><Link href="/">Home</Link></li>
         <li className="border border-black rounded-lg"><Link href="/blogs">All Blogs</Link></li>
-        <li className="border border-black rounded-lg"><Link href="/profile">Profile</Link></li>
+        <li className="border border-black rounded-lg"><Link href={`${user ? '/profile' : '/api/auth/login'}`}>Profile</Link></li>
     </>
     return (
         <section className="bg-gray-100 sticky top-0 z-50">
