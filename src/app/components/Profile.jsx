@@ -5,16 +5,14 @@ const Profile = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user) {
-    redirect("/api/auth/login?redirect_to=/profile");
-  }
-
-  return (
+  return user ? (
     <div className="container mx-auto mt-10 text-center">
       <h2 className="text-2xl font-bold">
-        Welcome to your profile!
+        Welcome to your profile, {user.given_name || "Guest"}!
       </h2>
     </div>
+  ) : (
+    redirect("/api/auth/login?redirect_to=/profile")
   );
 };
 
