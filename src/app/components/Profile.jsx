@@ -1,5 +1,5 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 const Profile = () => {
     const { getUser } = getKindeServerSession();
